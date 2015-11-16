@@ -1,4 +1,4 @@
-CC = gcc -Wall -g -Werror
+CC = gcc -Wall -g -Werror -std=c99
 
 all: tree aug
 tree: bin_tree.c print_tree.c

@@ -164,6 +164,29 @@ struct node* search(struct node *root, int val)
 	else
 		return search(root->right, val);
 }
+void printlevel(struct node* root, int level)
+{
+	if (root == NULL)
+		return;
+	if (level == 1) {
+		printf("%d  ", root->data);
+		return;
+	}
+	else {
+		printlevel(root->right, level-1);
+		printlevel(root->left, level-1);
+	}
+}
+
+void levelorder(struct node* root)
+{
+	int h = depth(root);
+	printf("Height of the tree is %d and Level Order is\n", h);
+	for (int i=1; i <=h; i++) {
+		printlevel(root, i);
+	}
+	printf("\n");
+}
 
 int main(void)
 {
@@ -210,5 +233,6 @@ int main(void)
 	printf("COUNT is %d\n",nodes(root));
 	bool res = hassum(root, 45);
 	printf("Bool val is %d\n", (int)res);
+	levelorder(root);
 	return 0;
 }
