@@ -13,12 +13,71 @@
  */
 /* Simplified with single pointer rathern than double
  * by returning the pointer always
+ *
+ * Main Algos for BST trees
+ * DFS - Depth First Search
+ * 1. Pre-order  - Visit Root, recur left, recur right
+ * 2. Post Order - Recur left, recur right, and visit root
+ * 3. In order - Recur left, visit root, recur right
+ *
+ * BFS - Level Order
+ * Find the height of tree = 1+max(left, right)
+ * for i = 1  <= height call level print function
+ * In level print function, if level == 1 print, if not recur left with level-1
+ * and recur right with level-1
+ *
+ * Operations
+ * 1. Search = check root, recur left or recur right based on value
+ * 2. Insert = Special root modifying code so either use double pointer or use
+ *    root return technique.
+ * 3. Min - Recur left till end
+ * 4. Max - Recur right till end
+ * 5. Next Largest or Successor - 
+ *    Use modified tree with parent node (take care of insert function)
+ *    2 cases
+ *	a. When there is a right subtree - min(right_subtree)
+ *	b. when there is no right subtree - keep going up to parent till larger
+ *	value comes. As soon as you find a value larger than itself return that
+ *	node.
+ * 6. DELETE - 
+ *    3 cases
+ *	a. Leaf - free it simple
+ *	b. Only one subtree as child - replace with child
+ *	c. 2 subtrees - Replace it with Next laregst in right subtree and free
+ *	the Next largest node.
+ *
+ * 7. Recongnize Unique Binary Tree : 
+ *    Convert tree to unique string, for every null (leaf or single child node)
+ *    add a # and construct a string.
+ *    Serialize a binary tree, the simplest way is to save pre/postorder and
+ *    an in-order traversal. This requires 2X space so a trick is to do pre-order
+ *    and store null pointers as de-limiters.
+ *
+ * Interesting Problems
+ *
+ * 1. Check if Tree is balanced
+ *    delta = absolute(height(right) - height(left)
+ *    delta = 0, 1 or -1 and right tree is balanced and left is balanced
+ *    delta && recur right && recur left
+ *    else not balanced
+ * 
+ * 2. Convert sorted array into tree with minimal height
+ *    1. __Heapify__
+ *    2. Make mid (start+end)/2 the root. then 
+ *    root->left = recur(arr, start,mid-1)
+ *    root->right = recur(arr, mid+1, end)
+ *    return root
+ * 
  */
 
-/* Serialize a binary tree, the simplest way is to save pre/postorder and
- * an in-order traversal. This requires 2X space so a trick is to do pre-order
- * and store null pointers as de-limiters
- */
+void mirror(struct node *root)
+{
+	/* Store the pre-order, and then construct
+	 * a tree by inserting using spacial insert
+	 * which reverses the BST property ie left goes to right
+	 * and right goes to left
+	 */
+}
 
 void tree_to_string(struct node* root, char *ptr)
 {
